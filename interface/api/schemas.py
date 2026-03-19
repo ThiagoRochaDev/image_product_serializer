@@ -87,3 +87,15 @@ class PipelineStatus(BaseModel):
     taxa_estruturado: float
     hipotese_validada: Optional[bool]
     relatorio_path: Optional[str]
+
+
+class ImageUploadValidationResponse(BaseModel):
+    """Resultado da análise de uma imagem enviada via upload."""
+    resolucao_ok: bool = Field(..., description="Resolução ≥ 1000×1000 px")
+    resolucao_dimensoes: str = Field(..., description="Dimensões reais da imagem (LxA)")
+    nitidez_laplaciano: float = Field(..., description="Variância Laplaciana (nitidez)")
+    nitidez_ok: bool = Field(..., description="Nitidez ≥ threshold mínimo")
+    centralizacao_iou: float = Field(..., description="IoU produto vs. zona central")
+    centralizacao_ok: bool = Field(..., description="IoU ≥ 0.50")
+    conforme: bool = Field(..., description="True se TODAS as métricas passarem")
+    score_conformidade: float = Field(..., description="Proporção de métricas aprovadas (0.0 a 1.0)")

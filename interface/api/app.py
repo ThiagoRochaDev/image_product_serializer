@@ -19,7 +19,9 @@ _ROOT = Path(__file__).resolve().parents[2]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from fastapi import BackgroundTasks, FastAPI, HTTPException
+import tempfile
+
+from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile
 
 from application.dtos.pipeline_result_dto import PipelineResultDTO
 from application.use_cases.generate_baseline_use_case import GenerateBaselineUseCase
@@ -33,7 +35,7 @@ from infrastructure.config import settings
 from infrastructure.cv.opencv_validator import OpenCVValidator
 from infrastructure.persistence.file_image_repository import FileImageRepository
 from infrastructure.reporting.json_reporter import JsonReporter
-from interface.api.schemas import PipelineRunRequest, PipelineStatus
+from interface.api.schemas import ImageUploadValidationResponse, PipelineRunRequest, PipelineStatus
 
 # Reusa os mocks já existentes na CLI (evita duplicar template de produtos/atributos).
 from interface.cli.pipeline import MockGeminiClient, MockProductRepository
@@ -213,3 +215,55 @@ def pipeline_run(req: PipelineRunRequest, background: BackgroundTasks) -> Pipeli
     background.add_task(_run_pipeline_job, req)
     with STATE.lock:
         return STATE.to_schema()
+
+
+@app.post(
+    "/image/validate",
+    response_model=ImageUploadValidationResponse,
+    summary="Analisa uma imagem enviada por upload",
+    description=(
+        "Recebe um arquivo de imagem (PNG, JPG, WEBP, etc.) e aplica as mesmas "
+        "3 métricas de qualidade usadas no pipeline:\n\n"
+        "- **Resolução** — mínimo 1000×1000 px\n"
+        "- **Nitidez** — variância Laplaciana ≥ 100\n"
+        "- **Centralização** — IoU do produto vs. zona central ≥ 0.50"
+    ),
+    tags=["Imagem"],
+)
+async def validate_uploaded_image(
+    file: UploadFile = File(..., description="Arquivo de imagem a ser analisado"),
+) -> ImageUploadValidationResponse:
+    """Valida uma imagem enviada diretamente via upload."""
+    thresholds = QualityThresholds(
+        min_resolution_px=settings.MIN_RESOLUTION_PX,
+        min_sharpness_variance=settings.MIN_SHARPNESS_VARIANCE,
+        min_iou=settings.MIN_IOU,
+        central_zone_ratio=settings.CENTRAL_ZONE_RATIO,
+    )
+    validator = OpenCVValidator(thresholds)
+    validate_uc = ValidateImageUseCase(validator, thresholds)
+
+    suffix = "." + (file.filename.rsplit(".", 1)[-1] if file.filename and "." in file.filename else "png")
+
+    tmp_path: str | None = None
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix, mode="wb") as tmp:
+            tmp_path = tmp.name
+            contents = await file.read()
+            tmp.write(contents)
+
+        result = validate_uc.execute(tmp_path)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Erro ao processar imagem: {exc}") from exc
+    finally:
+        if tmp_path:
+            import os
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+
+    data = result.to_dict()
+    return ImageUploadValidationResponse(**data)
