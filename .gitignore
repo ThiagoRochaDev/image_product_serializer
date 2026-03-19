@@ -1,0 +1,52 @@
+# ─── Ambiente virtual ───────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ─── Variáveis de ambiente ──────────────────────────────────────────────────
+.env
+*.local.env
+
+# ─── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+
+# ─── Outputs gerados pelo pipeline ──────────────────────────────────────────
+output/
+data/
+
+# ─── IDEs e editores ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Cache e misc ────────────────────────────────────────────────────────────
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ─── Sistema operacional ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Jupyter (se usado) ──────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb

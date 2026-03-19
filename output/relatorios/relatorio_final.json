@@ -1,0 +1,704 @@
+{
+  "meta": {
+    "gerado_em": "2026-03-17T03:37:24.837732+00:00",
+    "total_produtos": 15,
+    "total_imagens": 30,
+    "categorias": [
+      "eletronicos",
+      "vestuario",
+      "utensilios"
+    ],
+    "metricas": [
+      "resolucao",
+      "nitidez_laplaciano",
+      "centralizacao_iou"
+    ],
+    "limiares": {
+      "resolucao_minima_px": 1000,
+      "nitidez_minima_variancia": 100.0,
+      "iou_minimo": 0.5
+    }
+  },
+  "hipotese": {
+    "limiar_conformidade": 0.5,
+    "margem_minima": 0.0,
+    "resultado": "NAO_VALIDADA",
+    "cenario_avaliado": "estruturado",
+    "h1_aceita": false,
+    "h0_refutada": false
+  },
+  "baseline": {
+    "taxa_conformidade": 1.0,
+    "conformes": 15,
+    "nao_conformes": 0,
+    "media_nitidez": 382.47,
+    "media_iou": 0.8593,
+    "resolucao_100pct": true
+  },
+  "estruturado": {
+    "taxa_conformidade": 1.0,
+    "conformes": 15,
+    "nao_conformes": 0,
+    "media_nitidez": 481.27,
+    "media_iou": 0.8707,
+    "resolucao_100pct": true
+  },
+  "comparacao": {
+    "delta_taxa_conformidade": 0.0,
+    "delta_nitidez": 98.8,
+    "delta_iou": 0.0114,
+    "melhoria_percentual": "+0.0pp",
+    "estruturado_superior": false
+  },
+  "detalhes_por_produto": {
+    "baseline": [
+      {
+        "produto_id": "mock_000",
+        "produto_nome": "Samsung Galaxy S23 128GB Preto",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_001_baseline.png",
+        "prompt_utilizado": "product photo of Samsung Galaxy S23 128GB Preto",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 385.49,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9127,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_001",
+        "produto_nome": "iPhone 14 Pro 256GB Azul",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_002_baseline.png",
+        "prompt_utilizado": "product photo of iPhone 14 Pro 256GB Azul",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 367.34,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9668,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_002",
+        "produto_nome": "Notebook Dell Inspiron 15 i7",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_003_baseline.png",
+        "prompt_utilizado": "product photo of Notebook Dell Inspiron 15 i7",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 364.37,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8968,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_003",
+        "produto_nome": "Fone de Ouvido Sony WH-1000XM5",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_004_baseline.png",
+        "prompt_utilizado": "product photo of Fone de Ouvido Sony WH-1000XM5",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 419.48,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8093,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_004",
+        "produto_nome": "Tablet Samsung Galaxy Tab S8",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_005_baseline.png",
+        "prompt_utilizado": "product photo of Tablet Samsung Galaxy Tab S8",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 367.6,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8499,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_005",
+        "produto_nome": "Camiseta Polo Lacoste Branca M",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_006_baseline.png",
+        "prompt_utilizado": "product photo of Camiseta Polo Lacoste Branca M",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 411.87,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.83,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_006",
+        "produto_nome": "Calça Jeans Levi's 511 Slim Azul",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_007_baseline.png",
+        "prompt_utilizado": "product photo of Calça Jeans Levi's 511 Slim Azul",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 368.52,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8654,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_007",
+        "produto_nome": "Tênis Nike Air Max 270 Preto 42",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_008_baseline.png",
+        "prompt_utilizado": "product photo of Tênis Nike Air Max 270 Preto 42",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 358.61,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7943,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_008",
+        "produto_nome": "Vestido Floral Midi Feminino",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_009_baseline.png",
+        "prompt_utilizado": "product photo of Vestido Floral Midi Feminino",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 362.6,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8396,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_009",
+        "produto_nome": "Jaqueta Corta-Vento Adidas Azul",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_010_baseline.png",
+        "prompt_utilizado": "product photo of Jaqueta Corta-Vento Adidas Azul",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 358.68,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7745,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_010",
+        "produto_nome": "Panela de Pressão Tramontina 6L",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_011_baseline.png",
+        "prompt_utilizado": "product photo of Panela de Pressão Tramontina 6L",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 407.25,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8739,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_011",
+        "produto_nome": "Jogo de Facas Cuisinart 7 peças",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_012_baseline.png",
+        "prompt_utilizado": "product photo of Jogo de Facas Cuisinart 7 peças",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 391.2,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9413,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_012",
+        "produto_nome": "Liquidificador Philips Walita RI2620",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_013_baseline.png",
+        "prompt_utilizado": "product photo of Liquidificador Philips Walita RI2620",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 388.88,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.881,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_013",
+        "produto_nome": "Frigideira Antiaderente Tefal 26cm",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_014_baseline.png",
+        "prompt_utilizado": "product photo of Frigideira Antiaderente Tefal 26cm",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 416.47,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8693,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_014",
+        "produto_nome": "Cafeteira Nespresso Essenza Mini",
+        "cenario": "baseline",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_015_baseline.png",
+        "prompt_utilizado": "product photo of Cafeteira Nespresso Essenza Mini",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 368.64,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7843,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      }
+    ],
+    "estruturado": [
+      {
+        "produto_id": "mock_000",
+        "produto_nome": "Samsung Galaxy S23 128GB Preto",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_001_estruturado.png",
+        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "electronic device",
+          "cor_principal": "black",
+          "material": "glass and aluminum",
+          "formato": "rectangular slab",
+          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "categoria_visual": "electronics"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 467.32,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8345,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_001",
+        "produto_nome": "iPhone 14 Pro 256GB Azul",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_002_estruturado.png",
+        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "electronic device",
+          "cor_principal": "black",
+          "material": "glass and aluminum",
+          "formato": "rectangular slab",
+          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "categoria_visual": "electronics"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 493.28,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9727,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_002",
+        "produto_nome": "Notebook Dell Inspiron 15 i7",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_003_estruturado.png",
+        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "electronic device",
+          "cor_principal": "black",
+          "material": "glass and aluminum",
+          "formato": "rectangular slab",
+          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "categoria_visual": "electronics"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 486.79,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9778,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_003",
+        "produto_nome": "Fone de Ouvido Sony WH-1000XM5",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_004_estruturado.png",
+        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "electronic device",
+          "cor_principal": "black",
+          "material": "glass and aluminum",
+          "formato": "rectangular slab",
+          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "categoria_visual": "electronics"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 460.1,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7843,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_004",
+        "produto_nome": "Tablet Samsung Galaxy Tab S8",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_005_estruturado.png",
+        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "electronic device",
+          "cor_principal": "black",
+          "material": "glass and aluminum",
+          "formato": "rectangular slab",
+          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "categoria_visual": "electronics"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 517.08,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8175,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_005",
+        "produto_nome": "Camiseta Polo Lacoste Branca M",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_006_estruturado.png",
+        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "clothing item",
+          "cor_principal": "blue",
+          "material": "cotton",
+          "formato": "flat lay garment",
+          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "categoria_visual": "clothing"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 464.24,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8968,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_006",
+        "produto_nome": "Calça Jeans Levi's 511 Slim Azul",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_007_estruturado.png",
+        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "clothing item",
+          "cor_principal": "blue",
+          "material": "cotton",
+          "formato": "flat lay garment",
+          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "categoria_visual": "clothing"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 484.44,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9516,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_007",
+        "produto_nome": "Tênis Nike Air Max 270 Preto 42",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_008_estruturado.png",
+        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "clothing item",
+          "cor_principal": "blue",
+          "material": "cotton",
+          "formato": "flat lay garment",
+          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "categoria_visual": "clothing"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 457.75,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8499,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_008",
+        "produto_nome": "Vestido Floral Midi Feminino",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_009_estruturado.png",
+        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "clothing item",
+          "cor_principal": "blue",
+          "material": "cotton",
+          "formato": "flat lay garment",
+          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "categoria_visual": "clothing"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 503.19,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.83,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_009",
+        "produto_nome": "Jaqueta Corta-Vento Adidas Azul",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_010_estruturado.png",
+        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "clothing item",
+          "cor_principal": "blue",
+          "material": "cotton",
+          "formato": "flat lay garment",
+          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "categoria_visual": "clothing"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 479.39,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9889,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_010",
+        "produto_nome": "Panela de Pressão Tramontina 6L",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_011_estruturado.png",
+        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "kitchen utensil",
+          "cor_principal": "silver",
+          "material": "stainless steel",
+          "formato": "cylindrical",
+          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 469.11,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8706,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_011",
+        "produto_nome": "Jogo de Facas Cuisinart 7 peças",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_012_estruturado.png",
+        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "kitchen utensil",
+          "cor_principal": "silver",
+          "material": "stainless steel",
+          "formato": "cylindrical",
+          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 461.9,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.8193,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_012",
+        "produto_nome": "Liquidificador Philips Walita RI2620",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_013_estruturado.png",
+        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "kitchen utensil",
+          "cor_principal": "silver",
+          "material": "stainless steel",
+          "formato": "cylindrical",
+          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 499.4,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.9067,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_013",
+        "produto_nome": "Frigideira Antiaderente Tefal 26cm",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_014_estruturado.png",
+        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "kitchen utensil",
+          "cor_principal": "silver",
+          "material": "stainless steel",
+          "formato": "cylindrical",
+          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 519.6,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7855,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "mock_014",
+        "produto_nome": "Cafeteira Nespresso Essenza Mini",
+        "cenario": "structured",
+        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_015_estruturado.png",
+        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "objeto": "kitchen utensil",
+          "cor_principal": "silver",
+          "material": "stainless steel",
+          "formato": "cylindrical",
+          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 455.41,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7745,
+          "centralizacao_ok": true,
+          "conforme": true
+        },
+        "erro": null
+      }
+    ]
+  }
+}
