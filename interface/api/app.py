@@ -20,8 +20,9 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 import tempfile
+from typing import Optional
 
-from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, File, HTTPException, Query, UploadFile
 
 from application.dtos.pipeline_result_dto import PipelineResultDTO
 from application.use_cases.generate_baseline_use_case import GenerateBaselineUseCase
@@ -35,7 +36,16 @@ from infrastructure.config import settings
 from infrastructure.cv.opencv_validator import OpenCVValidator
 from infrastructure.persistence.file_image_repository import FileImageRepository
 from infrastructure.reporting.json_reporter import JsonReporter
-from interface.api.schemas import ImageUploadValidationResponse, PipelineRunRequest, PipelineStatus
+from interface.api.schemas import (
+    GenerateProductResponse,
+    ImageUploadValidationResponse,
+    PipelineRunRequest,
+    PipelineStatus,
+    ProductGenerateRequest,
+    ProductItem,
+    ProductListResponse,
+    ScenarioResult,
+)
 
 # Reusa os mocks já existentes na CLI (evita duplicar template de produtos/atributos).
 from interface.cli.pipeline import MockGeminiClient, MockProductRepository
@@ -267,3 +277,172 @@ async def validate_uploaded_image(
 
     data = result.to_dict()
     return ImageUploadValidationResponse(**data)
+
+
+# ─── Base Amazon Brasil ───────────────────────────────────────────────────────
+
+@app.get(
+    "/products",
+    response_model=ProductListResponse,
+    summary="Lista produtos da base Amazon Brasil",
+    description=(
+        "Carrega o CSV da base Amazon Brasil e retorna os produtos disponíveis.\n\n"
+        "- Use `csv_path` para apontar para o arquivo (padrão: `data/amazon_brasil.csv`)\n"
+        "- Use `category` para filtrar por categoria (`eletronicos`, `vestuario`, `utensilios`)\n"
+        "- Use `limit` e `offset` para paginação"
+    ),
+    tags=["Produtos"],
+)
+def list_products(
+    csv_path: str = Query("data/amazon_brasil.csv", description="Caminho para o CSV da base Amazon Brasil"),
+    category: Optional[str] = Query(None, description="Filtrar por categoria (opcional)"),
+    limit: int = Query(50, ge=1, le=500, description="Número máximo de produtos retornados"),
+    offset: int = Query(0, ge=0, description="Índice inicial (paginação)"),
+) -> ProductListResponse:
+    from infrastructure.persistence.csv_product_repository import CSVProductRepository
+
+    try:
+        repo = CSVProductRepository(csv_path)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+    df = repo._df.copy()
+    if category:
+        df = df[df["category_normalized"].str.contains(category.lower().strip(), na=False)]
+
+    total = len(df)
+    page = df.iloc[offset: offset + limit]
+
+    import hashlib
+    items = [
+        ProductItem(
+            id=hashlib.md5(str(row.get("name", "")).encode()).hexdigest()[:12],
+            name=str(row.get("name", "")),
+            description=str(row.get("description", "")),
+            category=str(row.get("category", "")),
+        )
+        for _, row in page.iterrows()
+    ]
+    return ProductListResponse(products=items, total=total, csv_path=str(csv_path))
+
+
+# ─── Geração de imagem para um produto ──────────────────────────────────────
+
+def _build_scenario_result(image_result) -> ScenarioResult:
+    """Converte ImageResult em ScenarioResult para a resposta da API."""
+    validation = getattr(image_result, "validation", None)
+    v_dict = validation.to_dict() if validation else {}
+    return ScenarioResult(
+        prompt=image_result.prompt_used or "",
+        imagem_path=getattr(image_result, "image_path", None),
+        atributos_gemini=getattr(image_result, "gemini_attributes", None),
+        resolucao_ok=v_dict.get("resolucao_ok"),
+        resolucao_dimensoes=v_dict.get("resolucao_dimensoes"),
+        nitidez_laplaciano=v_dict.get("nitidez_laplaciano"),
+        nitidez_ok=v_dict.get("nitidez_ok"),
+        centralizacao_iou=v_dict.get("centralizacao_iou"),
+        centralizacao_ok=v_dict.get("centralizacao_ok"),
+        conforme=v_dict.get("conforme"),
+        score_conformidade=v_dict.get("score_conformidade"),
+        erro=getattr(image_result, "error", None),
+    )
+
+
+@app.post(
+    "/product/generate",
+    response_model=GenerateProductResponse,
+    summary="Gera imagem de um produto via pipeline estruturado",
+    description=(
+        "Executa o pipeline completo para **um único produto**:\n\n"
+        "1. **Baseline** — prompt mínimo: `product photo of {nome}`\n"
+        "2. **Estruturado** — Gemini extrai atributos visuais → guardrails → SDXL\n\n"
+        "Retorna:\n"
+        "- Imagem gerada (caminho no servidor)\n"
+        "- JSON com atributos Gemini (`objeto`, `cor_principal`, `material`, etc.)\n"
+        "- Prompt estruturado completo usado\n"
+        "- Métricas de validação OpenCV (resolução, nitidez Laplaciana, IoU)\n"
+        "- Comparação baseline × estruturado"
+    ),
+    tags=["Produtos"],
+)
+def generate_product_image(req: ProductGenerateRequest) -> GenerateProductResponse:
+    from domain.entities.product import Product as DomainProduct
+
+    import hashlib
+    product_id = hashlib.md5(req.name.encode()).hexdigest()[:12]
+    product = DomainProduct.create(
+        name=req.name,
+        description=req.description,
+        category=req.category,
+        product_id=product_id,
+    )
+
+    if req.use_mock_gemini:
+        gemini_client = MockGeminiClient()
+    else:
+        from infrastructure.ai.gemini_client import GeminiClient
+        gemini_client = GeminiClient()
+
+    sd_client = StableDiffusionClient(backend=req.backend)
+    image_repo = FileImageRepository()
+    thresholds = QualityThresholds(
+        min_resolution_px=settings.MIN_RESOLUTION_PX,
+        min_sharpness_variance=settings.MIN_SHARPNESS_VARIANCE,
+        min_iou=settings.MIN_IOU,
+        central_zone_ratio=settings.CENTRAL_ZONE_RATIO,
+    )
+    validator = OpenCVValidator(thresholds)
+    validate_uc = ValidateImageUseCase(validator, thresholds)
+    prompt_service = PromptDomainService()
+
+    generate_baseline = GenerateBaselineUseCase(
+        prompt_service=prompt_service,
+        image_generator=sd_client,
+        image_repository=image_repo,
+        validate_use_case=validate_uc,
+        max_retries=settings.MAX_RETRIES,
+        retry_iou_threshold=settings.RETRY_IOU_THRESHOLD,
+    )
+    generate_structured = GenerateStructuredUseCase(
+        gemini_client=gemini_client,
+        prompt_service=prompt_service,
+        image_generator=sd_client,
+        image_repository=image_repo,
+        validate_use_case=validate_uc,
+        max_retries=settings.MAX_RETRIES,
+        retry_iou_threshold=settings.RETRY_IOU_THRESHOLD,
+    )
+
+    try:
+        baseline_result = generate_baseline.execute(product, product_index=0)
+        structured_result = generate_structured.execute(product, product_index=0)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Erro na geração: {exc}") from exc
+
+    base_ok = getattr(baseline_result.validation, "is_compliant", False) if baseline_result.validation else False
+    struct_ok = getattr(structured_result.validation, "is_compliant", False) if structured_result.validation else False
+
+    base_lap = getattr(baseline_result.validation, "sharpness_score", 0.0) if baseline_result.validation else 0.0
+    struct_lap = getattr(structured_result.validation, "sharpness_score", 0.0) if structured_result.validation else 0.0
+    base_iou = getattr(baseline_result.validation, "iou_score", 0.0) if baseline_result.validation else 0.0
+    struct_iou = getattr(structured_result.validation, "iou_score", 0.0) if structured_result.validation else 0.0
+
+    comparacao = {
+        "baseline_conforme": base_ok,
+        "estruturado_conforme": struct_ok,
+        "delta_nitidez": round(struct_lap - base_lap, 2),
+        "delta_iou": round(struct_iou - base_iou, 4),
+        "melhoria": struct_ok and not base_ok or (struct_iou > base_iou),
+    }
+
+    return GenerateProductResponse(
+        produto=ProductItem(
+            id=product_id,
+            name=req.name,
+            description=req.description,
+            category=req.category,
+        ),
+        cenario_baseline=_build_scenario_result(baseline_result),
+        cenario_estruturado=_build_scenario_result(structured_result),
+        comparacao=comparacao,
+    )

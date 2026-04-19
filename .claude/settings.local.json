@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/thiago.g.rocha/Downloads/TH/PROJETOS-DEV/**)",
+      "Bash(ls -la \"\\\\\\\\Mac\\\\Home\\\\Downloads\\\\TH\\\\PROJETOS-DEV\\\\image_product_serializer\")",
+      "Read(///Mac/Home/Downloads/TH/PROJETOS-DEV/**)",
+      "Bash(python -c \"from interface.api.app import app; print\\('OK'\\)\")"
+    ]
+  }
+}
