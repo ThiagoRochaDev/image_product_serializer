@@ -108,7 +108,7 @@ class StabilityAPIBackend(ISDXLBackend):
             "steps": settings.INFERENCE_STEPS,
         }
 
-        for attempt in range(1, 4):
+        for attempt in range(1, 6):
             resp = self._requests.post(
                 settings.STABILITY_API_URL, headers=headers, json=payload, timeout=120
             )
@@ -116,19 +116,69 @@ class StabilityAPIBackend(ISDXLBackend):
                 import base64
                 data = resp.json()
                 image_b64 = data["artifacts"][0]["base64"]
+                time.sleep(2)  # pausa mínima entre chamadas para evitar rate limit
                 return base64.b64decode(image_b64)
             elif resp.status_code == 429:
-                time.sleep(10 * attempt)  # rate limit — espera exponencial
+                wait = 20 * attempt
+                print(f"      [429] rate limit, aguardando {wait}s... body: {resp.text[:150]}")
+                time.sleep(wait)
             else:
                 raise RuntimeError(
-                    f"Stability API erro {resp.status_code}: {resp.text[:200]}"
+                    f"Stability API erro {resp.status_code}: {resp.text[:300]}"
                 )
 
-        raise RuntimeError("Stability API falhou após 3 tentativas (rate limit).")
+        raise RuntimeError(f"Stability API falhou após 5 tentativas (429). Último body: {resp.text[:300]}")
 
 
 # ─────────────────────────────────────────────────────────────
-# Backend 3: Local SDXL via HuggingFace Diffusers
+# Backend 3: HuggingFace Inference API (gratuito, com rate limit)
+# ─────────────────────────────────────────────────────────────
+class HuggingFaceAPIBackend(ISDXLBackend):
+    """
+    Gera imagens via HuggingFace InferenceClient (gratuito).
+    Modelo padrão: black-forest-labs/FLUX.1-schnell.
+    Obtenha token gratuito em: huggingface.co/settings/tokens
+    """
+
+    def __init__(self) -> None:
+        try:
+            from huggingface_hub import InferenceClient
+        except ImportError as exc:
+            raise ImportError("Instale: pip install huggingface-hub") from exc
+
+        api_key = settings.HF_API_KEY
+        if not api_key:
+            raise EnvironmentError(
+                "HF_API_KEY não encontrada. Adicione ao .env.\n"
+                "Obtenha token gratuito em: huggingface.co/settings/tokens"
+            )
+        self._client = InferenceClient(
+            model=settings.HF_MODEL_ID,
+            token=api_key,
+        )
+
+    def generate(self, prompt: str, filename: str) -> bytes:
+        import io
+        for attempt in range(1, 6):
+            try:
+                image = self._client.text_to_image(prompt)
+                buf = io.BytesIO()
+                image.save(buf, format="PNG")
+                time.sleep(2)
+                return buf.getvalue()
+            except Exception as exc:
+                msg = str(exc).lower()
+                if "rate" in msg or "503" in msg or "loading" in msg:
+                    wait = 30 * attempt
+                    print(f"      [HF] aguardando {wait}s... ({exc})")
+                    time.sleep(wait)
+                else:
+                    raise RuntimeError(f"HuggingFace erro: {exc}") from exc
+        raise RuntimeError("HuggingFace API falhou após 5 tentativas.")
+
+
+# ─────────────────────────────────────────────────────────────
+# Backend 4: Local SDXL via HuggingFace Diffusers
 # ─────────────────────────────────────────────────────────────
 class LocalSDXLBackend(ISDXLBackend):
     """
@@ -179,6 +229,7 @@ class StableDiffusionClient(IImageGenerator):
     _BACKEND_MAP: dict[str, type[ISDXLBackend]] = {
         "mock": MockBackend,
         "api": StabilityAPIBackend,
+        "hf": HuggingFaceAPIBackend,
         "local": LocalSDXLBackend,
     }
 

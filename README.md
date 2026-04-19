@@ -18,8 +18,10 @@ O pipeline processa cada produto em **dois cenários paralelos** para validaçã
 
 | Cenário | Prompt | Gemini | Guardrails | Hipótese |
 |---|---|---|---|---|
-| **Baseline** (controle) | Só o nome do produto | Não | Não | H₀: conformidade < 50% |
-| **Estruturado** (tratamento) | Atributos + guardrails | Sim | Sim | H₁: conformidade ≥ 50% |
+| **Baseline** (controle) | `english_name` do produto (mínimo) | Compartilhado | Não | H₀: conformidade < 50% |
+| **Estruturado** (tratamento) | Atributos visuais + guardrails | Compartilhado | Sim | H₁: conformidade ≥ 50% |
+
+> **Nota:** O Gemini é chamado **uma vez por produto** e o resultado é compartilhado entre os dois cenários. O baseline usa apenas o `english_name` extraído (prompt mínimo em inglês, compatível com todas as APIs de geração). O estruturado usa todos os atributos visuais. O Gemini é **multimodal**: quando o produto tem `imgUrl` no CSV, a foto real do produto é enviada junto ao texto para extrair atributos visuais com maior fidelidade.
 
 A diferença de conformidade entre os dois cenários é a **evidência central do TCC**: provar que o fluxo estruturado gera imagens de qualidade comercial de forma consistente e superior ao fluxo sem estruturação.
 
@@ -37,10 +39,10 @@ CSVProductRepository ──► amostragem estratificada (5 × 3 categorias = 15 
         |                                              |
         v                                              v
   CENÁRIO BASELINE                          CENÁRIO ESTRUTURADO
-  "product photo of {nome}"          Gemini ──► {objeto, cor, material, ...}
-        |                                              |
+  "product photo of {english_name}"   Gemini ──► {english_name, objeto, cor, ...}
+        |                            (texto + foto real via imgUrl)
         v                                    PromptDomainService
-  Stable Diffusion XL                    (atributos + 5 guardrails fixos)
+  Gerador de Imagens                     (atributos + 5 guardrails fixos)
         |                                              |
         v                                              v
   output/imagens/                          Stable Diffusion XL
@@ -100,7 +102,7 @@ image_product_serializer/
 ├── infrastructure/                # Implementações concretas (APIs, arquivos, banco)
 │   ├── config/settings.py         # Único arquivo de configuração — limiares, modelos, paths
 │   ├── ai/gemini_client.py        # Chama Gemini 2.5 Flash Lite e devolve JSON de atributos
-│   ├── ai/stable_diffusion_client.py  # 3 backends: mock / Stability AI API / GPU local
+│   ├── ai/stable_diffusion_client.py  # 4 backends: mock / Stability AI API / HuggingFace / GPU local
 │   ├── cv/opencv_validator.py     # Aplica as 3 métricas em cada imagem gerada
 │   ├── persistence/               # CSVProductRepository (Kaggle), FileImageRepository
 │   └── reporting/json_reporter.py # Gera relatorio_final.json
@@ -131,7 +133,10 @@ venv\Scripts\Activate.ps1          # Windows
 # 2. Dependências base (sem GPU)
 pip install -r requirements.txt
 
-# 3. GPU local NVIDIA >= 8GB VRAM (opcional)
+# 3. Backend HuggingFace — gratuito, recomendado
+pip install huggingface-hub
+
+# 4. GPU local NVIDIA >= 8GB VRAM (opcional)
 pip install diffusers transformers accelerate
 pip install torch --index-url https://download.pytorch.org/whl/cu121
 ```
@@ -149,8 +154,10 @@ Edite o `.env`:
 | Variável | Obrigatória | Onde obter |
 |---|---|---|
 | `GEMINI_API_KEY` | Sim (exceto `--mock`) | [Google AI Studio](https://aistudio.google.com/app/apikey) — tier gratuito |
-| `STABILITY_API_KEY` | Só se `SD_BACKEND=api` | [Stability AI](https://platform.stability.ai/account/keys) — ~R$ 0,10/imagem |
-| `SD_BACKEND` | Não (padrão: `mock`) | `mock` / `api` / `local` |
+| `HF_API_KEY` | Só se `SD_BACKEND=hf` | [HuggingFace Settings](https://huggingface.co/settings/tokens) — token Read, gratuito |
+| `STABILITY_API_KEY` | Só se `SD_BACKEND=api` | [Stability AI](https://platform.stability.ai/account/keys) — pago por crédito |
+| `HF_MODEL_ID` | Não (padrão: `black-forest-labs/FLUX.1-schnell`) | ID de qualquer modelo de texto-para-imagem no HuggingFace |
+| `SD_BACKEND` | Não (padrão: `mock`) | `mock` / `hf` / `api` / `local` |
 
 ### Dataset Amazon Brasil
 

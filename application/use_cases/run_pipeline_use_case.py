@@ -16,11 +16,14 @@ from application.dtos.pipeline_result_dto import (
     ImageResultDTO,
     ValidationDTO,
 )
-from domain.entities.image_result import ImageResult
+import time
 
-# Categorias do experimento definidas no guia metodológico (Seção 04)
-EXPERIMENT_CATEGORIES = ["eletronicos", "vestuario", "utensilios"]
-SAMPLES_PER_CATEGORY = 5
+from domain.entities.image_result import ImageResult
+from application.use_cases.generate_structured_use_case import IGeminiClient
+from infrastructure.config import settings
+
+EXPERIMENT_CATEGORIES = settings.EXPERIMENT_CATEGORIES
+SAMPLES_PER_CATEGORY = settings.SAMPLES_PER_CATEGORY
 
 
 def _image_result_to_dto(result: ImageResult) -> ImageResultDTO:
@@ -63,6 +66,7 @@ class RunPipelineUseCase:
         product_repository: IProductRepository,
         generate_baseline: GenerateBaselineUseCase,
         generate_structured: GenerateStructuredUseCase,
+        gemini_client: IGeminiClient,
         on_progress: Optional[Callable[[int, int, Product, ImageResult, ImageResult], None]] = None,
         hypothesis_threshold: float = 0.50,
         hypothesis_min_delta: float = 0.00,
@@ -70,6 +74,7 @@ class RunPipelineUseCase:
         self._product_repo = product_repository
         self._generate_baseline = generate_baseline
         self._generate_structured = generate_structured
+        self._gemini = gemini_client
         self._on_progress = on_progress
         self._hypothesis_threshold = hypothesis_threshold
         self._hypothesis_min_delta = hypothesis_min_delta
@@ -98,10 +103,22 @@ class RunPipelineUseCase:
 
         # 2. Processar cada produto
         for idx, product in enumerate(products, start=1):
-            # Baseline
-            baseline_result = self._generate_baseline.execute(product, idx)
-            # Estruturado
-            structured_result = self._generate_structured.execute(product, idx)
+            # Gemini uma vez por produto — compartilhado entre os dois cenários
+            try:
+                attributes = self._gemini.extract_visual_attributes(
+                    product_name=product.name,
+                    description=product.description,
+                    category=product.category,
+                    image_url=product.image_url,
+                )
+            except Exception:
+                attributes = None
+
+            # Baseline usa apenas english_name (prompt mínimo)
+            baseline_result = self._generate_baseline.execute(product, idx, attributes)
+            time.sleep(3)  # pausa entre baseline e estruturado do mesmo produto
+            # Estruturado usa todos os atributos visuais
+            structured_result = self._generate_structured.execute(product, idx, attributes)
 
             # Acumular resultados
             result_dto.baseline_results.append(_image_result_to_dto(baseline_result))

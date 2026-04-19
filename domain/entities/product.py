@@ -10,19 +10,13 @@ from dataclasses import dataclass, field
 
 @dataclass(frozen=True)
 class Product:
-    """
-    Entidade de domínio imutável que representa um produto.
-
-    Invariantes:
-    - `name` não pode ser vazio
-    - `category` deve ser uma das categorias válidas do experimento
-    """
     VALID_CATEGORIES = frozenset({"eletronicos", "vestuario", "utensilios"})
 
     id: str
     name: str
     description: str
     category: str
+    image_url: str = ""
 
     def __post_init__(self) -> None:
         if not self.name or not self.name.strip():
@@ -37,6 +31,7 @@ class Product:
         description: str,
         category: str,
         product_id: str | None = None,
+        image_url: str = "",
     ) -> "Product":
         """Factory method para criar um produto com id gerado automaticamente."""
         return cls(
@@ -44,6 +39,7 @@ class Product:
             name=name.strip(),
             description=(description or "").strip(),
             category=category.strip().lower(),
+            image_url=(image_url or "").strip(),
         )
 
     def __str__(self) -> str:

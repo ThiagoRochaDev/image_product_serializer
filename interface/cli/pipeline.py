@@ -92,6 +92,7 @@ class MockGeminiClient(IGeminiClient):
 
     _TEMPLATES = {
         "eletronicos": {
+            "english_name": "electronic device",
             "objeto": "electronic device",
             "cor_principal": "black",
             "material": "glass and aluminum",
@@ -100,6 +101,7 @@ class MockGeminiClient(IGeminiClient):
             "categoria_visual": "electronics",
         },
         "vestuario": {
+            "english_name": "clothing item",
             "objeto": "clothing item",
             "cor_principal": "blue",
             "material": "cotton",
@@ -108,6 +110,7 @@ class MockGeminiClient(IGeminiClient):
             "categoria_visual": "clothing",
         },
         "utensilios": {
+            "english_name": "kitchen utensil",
             "objeto": "kitchen utensil",
             "cor_principal": "silver",
             "material": "stainless steel",
@@ -117,9 +120,12 @@ class MockGeminiClient(IGeminiClient):
         },
     }
 
-    def extract_visual_attributes(self, product_name, description, category):
-        template = self._TEMPLATES.get(category, self._TEMPLATES["eletronicos"])
-        return dict(template)
+    def extract_visual_attributes(self, product_name, description, category, image_url=""):
+        key = category.lower()
+        for k in self._TEMPLATES:
+            if k in key:
+                return dict(self._TEMPLATES[k])
+        return dict(self._TEMPLATES["eletronicos"])
 
 
 # ─────────────────────────────────────────────────────────────
@@ -192,6 +198,7 @@ def build_and_run(args: argparse.Namespace) -> None:
         product_repository=product_repo,
         generate_baseline=generate_baseline,
         generate_structured=generate_structured,
+        gemini_client=gemini_client,
         on_progress=on_progress,
         hypothesis_threshold=settings.HYPOTHESIS_THRESHOLD,
         hypothesis_min_delta=settings.HYPOTHESIS_MIN_DELTA,
@@ -240,7 +247,7 @@ Exemplos:
     )
     parser.add_argument(
         "--backend",
-        choices=["mock", "api", "local"],
+        choices=["mock", "api", "hf", "local"],
         default=settings.SD_BACKEND,
         help="Backend do Stable Diffusion (padrão: valor de SD_BACKEND no .env)",
     )

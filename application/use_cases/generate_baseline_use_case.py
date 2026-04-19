@@ -50,7 +50,12 @@ class GenerateBaselineUseCase:
         self._max_retries = max_retries
         self._retry_iou_threshold = retry_iou_threshold
 
-    def execute(self, product: Product, product_index: int) -> ImageResult:
+    def execute(
+        self,
+        product: Product,
+        product_index: int,
+        gemini_attributes: dict | None = None,
+    ) -> ImageResult:
         result = ImageResult(
             product_id=product.id,
             product_name=product.name,
@@ -58,8 +63,8 @@ class GenerateBaselineUseCase:
         )
 
         try:
-            # 1. Prompt mínimo
-            prompt = self._prompt_service.build_baseline_prompt(product)
+            # 1. Prompt mínimo — usa english_name do Gemini para evitar rejeição por idioma
+            prompt = self._prompt_service.build_baseline_prompt(product, gemini_attributes)
             result.prompt_used = prompt.text
 
             filename = f"produto_{product_index:03d}_baseline.png"

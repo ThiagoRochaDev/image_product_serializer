@@ -1,12 +1,12 @@
 {
   "meta": {
-    "gerado_em": "2026-03-17T03:37:24.837732+00:00",
+    "gerado_em": "2026-04-19T21:54:21.130887+00:00",
     "total_produtos": 15,
     "total_imagens": 30,
     "categorias": [
-      "eletronicos",
-      "vestuario",
-      "utensilios"
+      "Eletrônicos",
+      "Roupas, Calçados e Joias",
+      "Utensílios de Cozinha"
     ],
     "metricas": [
       "resolucao",
@@ -28,674 +28,689 @@
     "h0_refutada": false
   },
   "baseline": {
-    "taxa_conformidade": 1.0,
-    "conformes": 15,
-    "nao_conformes": 0,
-    "media_nitidez": 382.47,
-    "media_iou": 0.8593,
+    "taxa_conformidade": 0.4,
+    "conformes": 6,
+    "nao_conformes": 9,
+    "media_nitidez": 204.5,
+    "media_iou": 0.5075,
     "resolucao_100pct": true
   },
   "estruturado": {
-    "taxa_conformidade": 1.0,
-    "conformes": 15,
-    "nao_conformes": 0,
-    "media_nitidez": 481.27,
-    "media_iou": 0.8707,
+    "taxa_conformidade": 0.4667,
+    "conformes": 7,
+    "nao_conformes": 8,
+    "media_nitidez": 512.96,
+    "media_iou": 0.4847,
     "resolucao_100pct": true
   },
   "comparacao": {
-    "delta_taxa_conformidade": 0.0,
-    "delta_nitidez": 98.8,
-    "delta_iou": 0.0114,
-    "melhoria_percentual": "+0.0pp",
-    "estruturado_superior": false
+    "delta_taxa_conformidade": 0.0667,
+    "delta_nitidez": 308.46,
+    "delta_iou": -0.0228,
+    "melhoria_percentual": "+6.7pp",
+    "estruturado_superior": true
   },
   "detalhes_por_produto": {
     "baseline": [
       {
-        "produto_id": "mock_000",
-        "produto_nome": "Samsung Galaxy S23 128GB Preto",
+        "produto_id": "a7c9c10b4e68",
+        "produto_nome": "SOLUSTRE 2 peças de câmera pescoço alça de ombro DSLR SLR cinto de ombro para todas as câmeras digitais DSLR SLR SLR câmera instantânea marrom",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_001_baseline.png",
-        "prompt_utilizado": "product photo of Samsung Galaxy S23 128GB Preto",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_001_baseline.png",
+        "prompt_utilizado": "product photo of SOLUSTRE DSLR Camera Neck Strap, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 385.49,
+          "nitidez_laplaciano": 366.43,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9127,
+          "centralizacao_iou": 0.6492,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_001",
-        "produto_nome": "iPhone 14 Pro 256GB Azul",
+        "produto_id": "7bfd0f152c90",
+        "produto_nome": "Fone de ouvido bluetooth 5.3 F9-5 - Função power bank e mostrador digital",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_002_baseline.png",
-        "prompt_utilizado": "product photo of iPhone 14 Pro 256GB Azul",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_002_baseline.png",
+        "prompt_utilizado": "product photo of F9-5 Bluetooth 5.3 Earbuds, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 367.34,
+          "nitidez_laplaciano": 19.35,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.4051,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "6a610c8c60cb",
+        "produto_nome": "Case Neoprene Preta para Tablet até 10,5\" Multi - BO442",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_003_baseline.png",
+        "prompt_utilizado": "product photo of Black Neoprene Tablet Sleeve, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 78.97,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.5339,
+          "centralizacao_ok": true,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "b85c2835378f",
+        "produto_nome": "3 Em 1 Bola De Navegação De Bússola Para Carro, Termômetro, Higrômetro, Ferramenta Multifuncional De Viagem Para Carro, Ferramentas De Navegação Ao Ar Livre",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_004_baseline.png",
+        "prompt_utilizado": "product photo of Car 3-in-1 Compass Thermometer Hygrometer, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 443.48,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9668,
+          "centralizacao_iou": 0.5518,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_002",
-        "produto_nome": "Notebook Dell Inspiron 15 i7",
+        "produto_id": "cdb8f700ac9e",
+        "produto_nome": "SanDisk 128 GB iXpand Flash Drive Go para iPhone e iPad - SDIX60N-128G-GN6NE",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_003_baseline.png",
-        "prompt_utilizado": "product photo of Notebook Dell Inspiron 15 i7",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_005_baseline.png",
+        "prompt_utilizado": "product photo of SanDisk 128GB iXpand Flash Drive, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 364.37,
+          "nitidez_laplaciano": 73.11,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.297,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "5d91f298db6f",
+        "produto_nome": "LUVA LONGA PARA PROTEÇÃO SOLAR FPU50+ NEW FORM - PAR - 81006",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_006_baseline.png",
+        "prompt_utilizado": "product photo of New Form FPU50+ Sun Protection Sleeve, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 141.61,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8968,
+          "centralizacao_iou": 0.3608,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "256890d38660",
+        "produto_nome": "100 Conjuntos de Acessórios para Bolsas de Roupas para Olhos de Latão, Kit de Anéis de Cabo de Olho Com Furo Bilateral de 4 Mm Adequado para Decoração de Roupas (cor bronze)",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_007_baseline.png",
+        "prompt_utilizado": "product photo of Brass Grommets for Bags and Clothes, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 148.88,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.6002,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_003",
-        "produto_nome": "Fone de Ouvido Sony WH-1000XM5",
+        "produto_id": "33372fa8a1f9",
+        "produto_nome": "Faixa Jiu Jitsu Branca Koral Unissex",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_004_baseline.png",
-        "prompt_utilizado": "product photo of Fone de Ouvido Sony WH-1000XM5",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_008_baseline.png",
+        "prompt_utilizado": "product photo of Koral White Jiu Jitsu Belt, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 419.48,
+          "nitidez_laplaciano": 68.43,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.4531,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "15390f90c892",
+        "produto_nome": "Guarda-Chuva À Prova De Vento Dobrável Proteção Uv Para Viagem Sombrinha 10 osso Leve Guarda-Chuva De Sol E Chuva Guarda-Sol Portátil Grande",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_009_baseline.png",
+        "prompt_utilizado": "product photo of Black Foldable UV Protection Travel Umbrella, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 234.74,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8093,
+          "centralizacao_iou": 0.7837,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_004",
-        "produto_nome": "Tablet Samsung Galaxy Tab S8",
+        "produto_id": "d164812e2eb0",
+        "produto_nome": "KIT 3 Camisetas Skube Com Proteção UV 50+ Dry Fit Segunda Pele Térmica Tecido Termodry Manga Longa",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_005_baseline.png",
-        "prompt_utilizado": "product photo of Tablet Samsung Galaxy Tab S8",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_010_baseline.png",
+        "prompt_utilizado": "product photo of Skube UV 50+ Long Sleeve T-Shirt, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 367.6,
+          "nitidez_laplaciano": 68.3,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.4946,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "c80efb21f295",
+        "produto_nome": "Kit Espetos Churrasco 40cm, Pegador Carnes, Espalhador Brasa",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_011_baseline.png",
+        "prompt_utilizado": "product photo of Stainless Steel Skewer Set 40cm, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 374.44,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8499,
+          "centralizacao_iou": 0.4903,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "821e60bcdb13",
+        "produto_nome": "Kit para Vinho Tampa Dosadora, Anel E Corta Gota porta vinho",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_012_baseline.png",
+        "prompt_utilizado": "product photo of Inox Wine Accessories Set, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 184.99,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.7146,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_005",
-        "produto_nome": "Camiseta Polo Lacoste Branca M",
+        "produto_id": "6c73e907324a",
+        "produto_nome": "Espremedor De Alho 18, 5cm Cabo Haüskraft Espremedor De Alho 18, 5cm Cabo Cabo Bronze No Voltagev",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_006_baseline.png",
-        "prompt_utilizado": "product photo of Camiseta Polo Lacoste Branca M",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_013_baseline.png",
+        "prompt_utilizado": "product photo of Haüskraft Copper Garlic Press, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 411.87,
+          "nitidez_laplaciano": 43.91,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.5378,
+          "centralizacao_ok": true,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "5b48e75ae78c",
+        "produto_nome": "Set Multipast - 6 Tipos de Massas Marcato",
+        "cenario": "baseline",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_014_baseline.png",
+        "prompt_utilizado": "product photo of Marcato Atlas 150 Pasta Maker Set, white background",
+        "atributos_gemini": null,
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 800.46,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.83,
+          "centralizacao_iou": 0.6137,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_006",
-        "produto_nome": "Calça Jeans Levi's 511 Slim Azul",
+        "produto_id": "84083306b60f",
+        "produto_nome": "Espumadeira Arienzo 1, 0 Mm X 34, 5 Cm Brinox Aço Inox",
         "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_007_baseline.png",
-        "prompt_utilizado": "product photo of Calça Jeans Levi's 511 Slim Azul",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_015_baseline.png",
+        "prompt_utilizado": "product photo of Brinox Stainless Steel Skimmer Spoon, white background",
         "atributos_gemini": null,
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 368.52,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.8654,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_007",
-        "produto_nome": "Tênis Nike Air Max 270 Preto 42",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_008_baseline.png",
-        "prompt_utilizado": "product photo of Tênis Nike Air Max 270 Preto 42",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 358.61,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.7943,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_008",
-        "produto_nome": "Vestido Floral Midi Feminino",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_009_baseline.png",
-        "prompt_utilizado": "product photo of Vestido Floral Midi Feminino",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 362.6,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.8396,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_009",
-        "produto_nome": "Jaqueta Corta-Vento Adidas Azul",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_010_baseline.png",
-        "prompt_utilizado": "product photo of Jaqueta Corta-Vento Adidas Azul",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 358.68,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.7745,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_010",
-        "produto_nome": "Panela de Pressão Tramontina 6L",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_011_baseline.png",
-        "prompt_utilizado": "product photo of Panela de Pressão Tramontina 6L",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 407.25,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.8739,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_011",
-        "produto_nome": "Jogo de Facas Cuisinart 7 peças",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_012_baseline.png",
-        "prompt_utilizado": "product photo of Jogo de Facas Cuisinart 7 peças",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 391.2,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.9413,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_012",
-        "produto_nome": "Liquidificador Philips Walita RI2620",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_013_baseline.png",
-        "prompt_utilizado": "product photo of Liquidificador Philips Walita RI2620",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 388.88,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.881,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_013",
-        "produto_nome": "Frigideira Antiaderente Tefal 26cm",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_014_baseline.png",
-        "prompt_utilizado": "product photo of Frigideira Antiaderente Tefal 26cm",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 416.47,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.8693,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_014",
-        "produto_nome": "Cafeteira Nespresso Essenza Mini",
-        "cenario": "baseline",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_015_baseline.png",
-        "prompt_utilizado": "product photo of Cafeteira Nespresso Essenza Mini",
-        "atributos_gemini": null,
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 368.64,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.7843,
-          "centralizacao_ok": true,
-          "conforme": true
+          "nitidez_laplaciano": 20.35,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.1267,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       }
     ],
     "estruturado": [
       {
-        "produto_id": "mock_000",
-        "produto_nome": "Samsung Galaxy S23 128GB Preto",
+        "produto_id": "a7c9c10b4e68",
+        "produto_nome": "SOLUSTRE 2 peças de câmera pescoço alça de ombro DSLR SLR cinto de ombro para todas as câmeras digitais DSLR SLR SLR câmera instantânea marrom",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_001_estruturado.png",
-        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_001_estruturado.png",
+        "prompt_utilizado": "tan fabric and leather SOLUSTRE DSLR Camera Neck Strap, adjustable strap, tan fabric with leather accents, adjustable straps, buckle closures, small logo tags,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "electronic device",
-          "cor_principal": "black",
-          "material": "glass and aluminum",
-          "formato": "rectangular slab",
-          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "english_name": "SOLUSTRE DSLR Camera Neck Strap",
+          "objeto": "camera strap",
+          "cor_principal": "tan",
+          "material": "fabric and leather",
+          "formato": "adjustable strap",
+          "detalhes_visuais": "tan fabric with leather accents, adjustable straps, buckle closures, small logo tags",
           "categoria_visual": "electronics"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 467.32,
+          "nitidez_laplaciano": 2807.05,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8345,
+          "centralizacao_iou": 0.6065,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_001",
-        "produto_nome": "iPhone 14 Pro 256GB Azul",
+        "produto_id": "7bfd0f152c90",
+        "produto_nome": "Fone de ouvido bluetooth 5.3 F9-5 - Função power bank e mostrador digital",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_002_estruturado.png",
-        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_002_estruturado.png",
+        "prompt_utilizado": "black plastic and metal F9-5 Bluetooth 5.3 Earbuds, compact charging case with earbuds, digital display showing battery percentage, charging case, earbuds with blue LED accents, TWS logo on box,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "electronic device",
+          "english_name": "F9-5 Bluetooth 5.3 Earbuds",
+          "objeto": "wireless earbuds",
           "cor_principal": "black",
-          "material": "glass and aluminum",
-          "formato": "rectangular slab",
-          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "material": "plastic and metal",
+          "formato": "compact charging case with earbuds",
+          "detalhes_visuais": "digital display showing battery percentage, charging case, earbuds with blue LED accents, TWS logo on box",
           "categoria_visual": "electronics"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 493.28,
+          "nitidez_laplaciano": 119.11,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9727,
-          "centralizacao_ok": true,
-          "conforme": true
+          "centralizacao_iou": 0.358,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       },
       {
-        "produto_id": "mock_002",
-        "produto_nome": "Notebook Dell Inspiron 15 i7",
+        "produto_id": "6a610c8c60cb",
+        "produto_nome": "Case Neoprene Preta para Tablet até 10,5\" Multi - BO442",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_003_estruturado.png",
-        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_003_estruturado.png",
+        "prompt_utilizado": "black neoprene Black Neoprene Tablet Sleeve, rectangular, zipper closure, padded interior, slim design,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "electronic device",
+          "english_name": "Black Neoprene Tablet Sleeve",
+          "objeto": "tablet sleeve",
           "cor_principal": "black",
-          "material": "glass and aluminum",
-          "formato": "rectangular slab",
-          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "material": "neoprene",
+          "formato": "rectangular",
+          "detalhes_visuais": "zipper closure, padded interior, slim design",
           "categoria_visual": "electronics"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 486.79,
+          "nitidez_laplaciano": 217.03,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9778,
+          "centralizacao_iou": 0.5112,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_003",
-        "produto_nome": "Fone de Ouvido Sony WH-1000XM5",
+        "produto_id": "b85c2835378f",
+        "produto_nome": "3 Em 1 Bola De Navegação De Bússola Para Carro, Termômetro, Higrômetro, Ferramenta Multifuncional De Viagem Para Carro, Ferramentas De Navegação Ao Ar Livre",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_004_estruturado.png",
-        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_004_estruturado.png",
+        "prompt_utilizado": "black plastic Car 3-in-1 Compass Thermometer Hygrometer, rectangular with rounded corners, three circular gauges, compass, thermometer, hygrometer, black casing, silver trim,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "electronic device",
+          "english_name": "Car 3-in-1 Compass Thermometer Hygrometer",
+          "objeto": "instrument cluster",
           "cor_principal": "black",
-          "material": "glass and aluminum",
-          "formato": "rectangular slab",
-          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "material": "plastic",
+          "formato": "rectangular with rounded corners",
+          "detalhes_visuais": "three circular gauges, compass, thermometer, hygrometer, black casing, silver trim",
           "categoria_visual": "electronics"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 460.1,
+          "nitidez_laplaciano": 353.84,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.7843,
+          "centralizacao_iou": 0.8189,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_004",
-        "produto_nome": "Tablet Samsung Galaxy Tab S8",
+        "produto_id": "cdb8f700ac9e",
+        "produto_nome": "SanDisk 128 GB iXpand Flash Drive Go para iPhone e iPad - SDIX60N-128G-GN6NE",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_005_estruturado.png",
-        "prompt_utilizado": "black glass and aluminum electronic device, rectangular slab, glossy screen, metallic frame, premium finish,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_005_estruturado.png",
+        "prompt_utilizado": "silver and black aluminum and plastic SanDisk 128GB iXpand Flash Drive, swivel, Lightning connector, USB connector, swivel design, SanDisk logo, brushed aluminum casing, black plastic housing,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "electronic device",
-          "cor_principal": "black",
-          "material": "glass and aluminum",
-          "formato": "rectangular slab",
-          "detalhes_visuais": "glossy screen, metallic frame, premium finish",
+          "english_name": "SanDisk 128GB iXpand Flash Drive",
+          "objeto": "flash drive",
+          "cor_principal": "silver and black",
+          "material": "aluminum and plastic",
+          "formato": "swivel",
+          "detalhes_visuais": "Lightning connector, USB connector, swivel design, SanDisk logo, brushed aluminum casing, black plastic housing",
           "categoria_visual": "electronics"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 517.08,
+          "nitidez_laplaciano": 261.12,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8175,
-          "centralizacao_ok": true,
-          "conforme": true
+          "centralizacao_iou": 0.271,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       },
       {
-        "produto_id": "mock_005",
-        "produto_nome": "Camiseta Polo Lacoste Branca M",
+        "produto_id": "5d91f298db6f",
+        "produto_nome": "LUVA LONGA PARA PROTEÇÃO SOLAR FPU50+ NEW FORM - PAR - 81006",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_006_estruturado.png",
-        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_006_estruturado.png",
+        "prompt_utilizado": "beige fabric New Form FPU50+ Sun Protection Sleeve, long sleeve, fingerless, full arm coverage, elastic cuff,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "clothing item",
-          "cor_principal": "blue",
-          "material": "cotton",
-          "formato": "flat lay garment",
-          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "english_name": "New Form FPU50+ Sun Protection Sleeve",
+          "objeto": "arm sleeve",
+          "cor_principal": "beige",
+          "material": "fabric",
+          "formato": "long sleeve",
+          "detalhes_visuais": "fingerless, full arm coverage, elastic cuff",
           "categoria_visual": "clothing"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 464.24,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.8968,
+          "nitidez_laplaciano": 96.26,
+          "nitidez_ok": false,
+          "centralizacao_iou": 0.8065,
           "centralizacao_ok": true,
-          "conforme": true
+          "conforme": false
         },
         "erro": null
       },
       {
-        "produto_id": "mock_006",
-        "produto_nome": "Calça Jeans Levi's 511 Slim Azul",
+        "produto_id": "256890d38660",
+        "produto_nome": "100 Conjuntos de Acessórios para Bolsas de Roupas para Olhos de Latão, Kit de Anéis de Cabo de Olho Com Furo Bilateral de 4 Mm Adequado para Decoração de Roupas (cor bronze)",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_007_estruturado.png",
-        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_007_estruturado.png",
+        "prompt_utilizado": "bronze brass Brass Grommets for Bags and Clothes, circular ring, metal rings, small, eyelet shape, vintage finish, pile, some individual pieces,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "clothing item",
-          "cor_principal": "blue",
-          "material": "cotton",
-          "formato": "flat lay garment",
-          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "english_name": "Brass Grommets for Bags and Clothes",
+          "objeto": "grommets",
+          "cor_principal": "bronze",
+          "material": "brass",
+          "formato": "circular ring",
+          "detalhes_visuais": "metal rings, small, eyelet shape, vintage finish, pile, some individual pieces",
           "categoria_visual": "clothing"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 484.44,
+          "nitidez_laplaciano": 282.67,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9516,
+          "centralizacao_iou": 0.5356,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_007",
-        "produto_nome": "Tênis Nike Air Max 270 Preto 42",
+        "produto_id": "33372fa8a1f9",
+        "produto_nome": "Faixa Jiu Jitsu Branca Koral Unissex",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_008_estruturado.png",
-        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_008_estruturado.png",
+        "prompt_utilizado": "white fabric Koral White Jiu Jitsu Belt, long rectangular strip, woven texture, Koral logo, black fabric patch, white color,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "clothing item",
-          "cor_principal": "blue",
-          "material": "cotton",
-          "formato": "flat lay garment",
-          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "english_name": "Koral White Jiu Jitsu Belt",
+          "objeto": "belt",
+          "cor_principal": "white",
+          "material": "fabric",
+          "formato": "long rectangular strip",
+          "detalhes_visuais": "woven texture, Koral logo, black fabric patch, white color",
           "categoria_visual": "clothing"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 457.75,
+          "nitidez_laplaciano": 449.79,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8499,
-          "centralizacao_ok": true,
-          "conforme": true
+          "centralizacao_iou": 0.3938,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       },
       {
-        "produto_id": "mock_008",
-        "produto_nome": "Vestido Floral Midi Feminino",
+        "produto_id": "15390f90c892",
+        "produto_nome": "Guarda-Chuva À Prova De Vento Dobrável Proteção Uv Para Viagem Sombrinha 10 osso Leve Guarda-Chuva De Sol E Chuva Guarda-Sol Portátil Grande",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_009_estruturado.png",
-        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_009_estruturado.png",
+        "prompt_utilizado": "black fabric and metal Black Foldable UV Protection Travel Umbrella, compact foldable, black canopy, patterned inner lining, metal shaft, curved handle, 10 ribs,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "clothing item",
-          "cor_principal": "blue",
-          "material": "cotton",
-          "formato": "flat lay garment",
-          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "english_name": "Black Foldable UV Protection Travel Umbrella",
+          "objeto": "umbrella",
+          "cor_principal": "black",
+          "material": "fabric and metal",
+          "formato": "compact foldable",
+          "detalhes_visuais": "black canopy, patterned inner lining, metal shaft, curved handle, 10 ribs",
           "categoria_visual": "clothing"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 503.19,
+          "nitidez_laplaciano": 147.11,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.83,
+          "centralizacao_iou": 0.7402,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_009",
-        "produto_nome": "Jaqueta Corta-Vento Adidas Azul",
+        "produto_id": "d164812e2eb0",
+        "produto_nome": "KIT 3 Camisetas Skube Com Proteção UV 50+ Dry Fit Segunda Pele Térmica Tecido Termodry Manga Longa",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_010_estruturado.png",
-        "prompt_utilizado": "blue cotton clothing item, flat lay garment, clean stitching, fabric texture, label visible,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_010_estruturado.png",
+        "prompt_utilizado": "multi-color polyester Skube UV 50+ Long Sleeve T-Shirt, standard fit, crew neck, long sleeves, plain design, three colors,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "clothing item",
-          "cor_principal": "blue",
-          "material": "cotton",
-          "formato": "flat lay garment",
-          "detalhes_visuais": "clean stitching, fabric texture, label visible",
+          "english_name": "Skube UV 50+ Long Sleeve T-Shirt",
+          "objeto": "long sleeve t-shirt",
+          "cor_principal": "multi-color",
+          "material": "polyester",
+          "formato": "standard fit",
+          "detalhes_visuais": "crew neck, long sleeves, plain design, three colors",
           "categoria_visual": "clothing"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 479.39,
+          "nitidez_laplaciano": 134.67,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9889,
+          "centralizacao_iou": 0.7071,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_010",
-        "produto_nome": "Panela de Pressão Tramontina 6L",
+        "produto_id": "c80efb21f295",
+        "produto_nome": "Kit Espetos Churrasco 40cm, Pegador Carnes, Espalhador Brasa",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_011_estruturado.png",
-        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_011_estruturado.png",
+        "prompt_utilizado": "silver stainless steel Stainless Steel Skewer Set 40cm, long, slender, metal skewers, tongs, meat fork, basting brush, various handles,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "kitchen utensil",
+          "english_name": "Stainless Steel Skewer Set 40cm",
+          "objeto": "skewer set",
           "cor_principal": "silver",
           "material": "stainless steel",
-          "formato": "cylindrical",
-          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "formato": "long, slender",
+          "detalhes_visuais": "metal skewers, tongs, meat fork, basting brush, various handles",
           "categoria_visual": "kitchenware"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 469.11,
+          "nitidez_laplaciano": 653.38,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8706,
+          "centralizacao_iou": 0.3061,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "821e60bcdb13",
+        "produto_nome": "Kit para Vinho Tampa Dosadora, Anel E Corta Gota porta vinho",
+        "cenario": "structured",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_012_estruturado.png",
+        "prompt_utilizado": "silver stainless steel and plastic Inox Wine Accessories Set, set of three, wine foil cutter, wine stopper, wine pourer, chrome accents, black plastic handles,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "english_name": "Inox Wine Accessories Set",
+          "objeto": "wine accessories set",
+          "cor_principal": "silver",
+          "material": "stainless steel and plastic",
+          "formato": "set of three",
+          "detalhes_visuais": "wine foil cutter, wine stopper, wine pourer, chrome accents, black plastic handles",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 481.57,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.2573,
+          "centralizacao_ok": false,
+          "conforme": false
+        },
+        "erro": null
+      },
+      {
+        "produto_id": "6c73e907324a",
+        "produto_nome": "Espremedor De Alho 18, 5cm Cabo Haüskraft Espremedor De Alho 18, 5cm Cabo Cabo Bronze No Voltagev",
+        "cenario": "structured",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_013_estruturado.png",
+        "prompt_utilizado": "copper and silver stainless steel and copper Haüskraft Copper Garlic Press, ergonomic handles with hinged press mechanism, copper-colored handles, silver stainless steel mechanism, hinged design, textured handle grips, Haüskraft logo on the side,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "atributos_gemini": {
+          "english_name": "Haüskraft Copper Garlic Press",
+          "objeto": "garlic press",
+          "cor_principal": "copper and silver",
+          "material": "stainless steel and copper",
+          "formato": "ergonomic handles with hinged press mechanism",
+          "detalhes_visuais": "copper-colored handles, silver stainless steel mechanism, hinged design, textured handle grips, Haüskraft logo on the side",
+          "categoria_visual": "kitchenware"
+        },
+        "validacao": {
+          "resolucao_ok": true,
+          "resolucao_dimensoes": "1024x1024",
+          "nitidez_laplaciano": 225.08,
+          "nitidez_ok": true,
+          "centralizacao_iou": 0.5617,
           "centralizacao_ok": true,
           "conforme": true
         },
         "erro": null
       },
       {
-        "produto_id": "mock_011",
-        "produto_nome": "Jogo de Facas Cuisinart 7 peças",
+        "produto_id": "5b48e75ae78c",
+        "produto_nome": "Set Multipast - 6 Tipos de Massas Marcato",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_012_estruturado.png",
-        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_014_estruturado.png",
+        "prompt_utilizado": "silver stainless steel Marcato Atlas 150 Pasta Maker Set, rectangular machine with attachments, chrome finish, crank handle, adjustable rollers, multiple cutting dies, embossed logo 'Atlas 150',\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "kitchen utensil",
+          "english_name": "Marcato Atlas 150 Pasta Maker Set",
+          "objeto": "pasta maker",
           "cor_principal": "silver",
           "material": "stainless steel",
-          "formato": "cylindrical",
-          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "formato": "rectangular machine with attachments",
+          "detalhes_visuais": "chrome finish, crank handle, adjustable rollers, multiple cutting dies, embossed logo 'Atlas 150'",
           "categoria_visual": "kitchenware"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 461.9,
+          "nitidez_laplaciano": 1254.31,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.8193,
-          "centralizacao_ok": true,
-          "conforme": true
+          "centralizacao_iou": 0.218,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       },
       {
-        "produto_id": "mock_012",
-        "produto_nome": "Liquidificador Philips Walita RI2620",
+        "produto_id": "84083306b60f",
+        "produto_nome": "Espumadeira Arienzo 1, 0 Mm X 34, 5 Cm Brinox Aço Inox",
         "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_013_estruturado.png",
-        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
+        "caminho_imagem": "/Users/thiagoguimaraesrocha/Downloads/TH/PROJETOS-DEV/image_product_serializer/output/imagens/produto_015_estruturado.png",
+        "prompt_utilizado": "silver stainless steel Brinox Stainless Steel Skimmer Spoon, oval head with long handle, perforated oval head, long cylindrical handle, polished finish, hanging hook on handle end,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
         "atributos_gemini": {
-          "objeto": "kitchen utensil",
+          "english_name": "Brinox Stainless Steel Skimmer Spoon",
+          "objeto": "skimmer spoon",
           "cor_principal": "silver",
           "material": "stainless steel",
-          "formato": "cylindrical",
-          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
+          "formato": "oval head with long handle",
+          "detalhes_visuais": "perforated oval head, long cylindrical handle, polished finish, hanging hook on handle end",
           "categoria_visual": "kitchenware"
         },
         "validacao": {
           "resolucao_ok": true,
           "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 499.4,
+          "nitidez_laplaciano": 211.37,
           "nitidez_ok": true,
-          "centralizacao_iou": 0.9067,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_013",
-        "produto_nome": "Frigideira Antiaderente Tefal 26cm",
-        "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_014_estruturado.png",
-        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
-        "atributos_gemini": {
-          "objeto": "kitchen utensil",
-          "cor_principal": "silver",
-          "material": "stainless steel",
-          "formato": "cylindrical",
-          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
-          "categoria_visual": "kitchenware"
-        },
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 519.6,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.7855,
-          "centralizacao_ok": true,
-          "conforme": true
-        },
-        "erro": null
-      },
-      {
-        "produto_id": "mock_014",
-        "produto_nome": "Cafeteira Nespresso Essenza Mini",
-        "cenario": "structured",
-        "caminho_imagem": "C:\\Users\\thiag\\Downloads\\tcc_projetc\\output\\imagens\\produto_015_estruturado.png",
-        "prompt_utilizado": "silver stainless steel kitchen utensil, cylindrical, polished surface, ergonomic handle, professional grade,\npure white background,\nsoft studio lighting, even illumination,\ncentered, front view, full product visible,\nprofessional product photography, commercial grade,\nhigh resolution, sharp focus, 8k",
-        "atributos_gemini": {
-          "objeto": "kitchen utensil",
-          "cor_principal": "silver",
-          "material": "stainless steel",
-          "formato": "cylindrical",
-          "detalhes_visuais": "polished surface, ergonomic handle, professional grade",
-          "categoria_visual": "kitchenware"
-        },
-        "validacao": {
-          "resolucao_ok": true,
-          "resolucao_dimensoes": "1024x1024",
-          "nitidez_laplaciano": 455.41,
-          "nitidez_ok": true,
-          "centralizacao_iou": 0.7745,
-          "centralizacao_ok": true,
-          "conforme": true
+          "centralizacao_iou": 0.1779,
+          "centralizacao_ok": false,
+          "conforme": false
         },
         "erro": null
       }

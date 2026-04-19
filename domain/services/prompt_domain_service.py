@@ -34,12 +34,19 @@ class PromptDomainService:
     não na camada de infraestrutura ou de aplicação.
     """
 
-    def build_baseline_prompt(self, product: Product) -> Prompt:
+    def build_baseline_prompt(
+        self,
+        product: Product,
+        gemini_attributes: dict | None = None,
+    ) -> Prompt:
         """
-        Prompt mínimo — apenas o nome do produto.
+        Prompt mínimo — nome do produto em inglês + fundo branco.
         Representa o cenário controle (H₀).
+        Usa english_name do Gemini para garantir compatibilidade com APIs inglês-only.
         """
-        text = f"product photo of {product.name}"
+        english_name = (gemini_attributes or {}).get("english_name", "").strip()
+        name = english_name or product.name
+        text = f"product photo of {name}, white background"
         return Prompt(text=text, scenario=Scenario.BASELINE)
 
     def build_structured_prompt(
@@ -62,15 +69,16 @@ class PromptDomainService:
 
         # 1. Atributos semânticos extraídos pelo Gemini
         attr = gemini_attributes or {}
+        english_name = attr.get("english_name", "").strip()
         cor = attr.get("cor_principal", "")
         material = attr.get("material", "")
         objeto = attr.get("objeto", product.name)
         formato = attr.get("formato", "")
         detalhes = attr.get("detalhes_visuais", "")
-        categoria = attr.get("categoria_visual", product.category)
 
-        # Monta a descrição visual do produto
-        visual_desc_parts = [p for p in [cor, material, objeto] if p]
+        # Âncora: nome em inglês garante que o SD gere o produto certo
+        anchor = english_name or objeto
+        visual_desc_parts = [p for p in [cor, material, anchor] if p]
         visual_desc = " ".join(visual_desc_parts)
         if formato:
             visual_desc += f", {formato}"

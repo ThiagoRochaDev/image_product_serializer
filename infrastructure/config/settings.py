@@ -33,6 +33,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 # ─────────────────────────────────────────────────────────────
 GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
 STABILITY_API_KEY: str = os.getenv("STABILITY_API_KEY", "")
+HF_API_KEY: str = os.getenv("HF_API_KEY", "")
 
 # ─────────────────────────────────────────────────────────────
 # Modelos de IA
@@ -41,14 +42,16 @@ STABILITY_API_KEY: str = os.getenv("STABILITY_API_KEY", "")
 GEMINI_MODEL: str = "gemini-2.5-flash-lite"
 SDXL_MODEL_ID: str = "stabilityai/stable-diffusion-xl-base-1.0"
 STABILITY_API_URL: str = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"
+HF_MODEL_ID: str = os.getenv("HF_MODEL_ID", "black-forest-labs/FLUX.1-schnell")
 
 # ─────────────────────────────────────────────────────────────
 # Modo do backend de geração de imagens
 # ─────────────────────────────────────────────────────────────
 # "local"  → GPU local via HuggingFace Diffusers (requer NVIDIA >= 8GB VRAM)
-# "api"    → Stability AI REST API (~R$0.10/imagem)
+# "api"    → Stability AI REST API (pago)
+# "hf"     → HuggingFace Inference API (gratuito com rate limit)
 # "mock"   → Imagem placeholder gerada por Pillow (sem custo, para testes)
-SD_BACKEND: Literal["local", "api", "mock"] = os.getenv("SD_BACKEND", "mock")
+SD_BACKEND: Literal["local", "api", "hf", "mock"] = os.getenv("SD_BACKEND", "mock")
 
 # Parâmetros de geração
 IMAGE_WIDTH: int = 1024
@@ -67,7 +70,7 @@ CENTRAL_ZONE_RATIO: float = 0.70
 # ─────────────────────────────────────────────────────────────
 # Experimento
 # ─────────────────────────────────────────────────────────────
-EXPERIMENT_CATEGORIES: list[str] = ["eletronicos", "vestuario", "utensilios"]
+EXPERIMENT_CATEGORIES: list[str] = ["Eletrônicos", "Roupas, Calçados e Joias", "Utensílios de Cozinha"]
 SAMPLES_PER_CATEGORY: int = 5
 MAX_RETRIES: int = 1          # tentativas para imagens com IoU < 0.20
 RETRY_IOU_THRESHOLD: float = 0.20  # retry apenas para falha severa de centralização

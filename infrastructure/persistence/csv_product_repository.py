@@ -6,6 +6,7 @@ Faz amostragem estratificada: 5 produtos por categoria, randomizada com seed fix
 from __future__ import annotations
 
 import hashlib
+import unicodedata
 from pathlib import Path
 from typing import List
 
@@ -18,11 +19,19 @@ from domain.repositories.product_repository import IProductRepository
 _COLUMN_MAP = {
     "name": ["product_name", "nome", "name", "title", "product_title", "titulo"],
     "description": ["product_description", "description", "descricao", "about_product", "description_product"],
-    "category": ["category", "categoria", "product_category", "main_category"],
+    "category": ["category", "categoria", "product_category", "main_category", "categoryname", "category_name"],
 }
 
-# Seed fixa garante reprodutibilidade do experimento
 _RANDOM_SEED = 42
+
+
+def _strip_accents(text) -> str:
+    if not isinstance(text, str):
+        return ""
+    return "".join(
+        c for c in unicodedata.normalize("NFD", text)
+        if unicodedata.category(c) != "Mn"
+    )
 
 
 class CSVProductRepository(IProductRepository):
@@ -81,28 +90,30 @@ class CSVProductRepository(IProductRepository):
         df = df.rename(columns=col_mapping)
 
         # Mantém apenas colunas relevantes
-        keep = [c for c in ["name", "description", "category"] if c in df.columns]
+        keep = [c for c in ["name", "description", "category", "imgurl"] if c in df.columns]
         df = df[keep].dropna(subset=["name"])
         df["description"] = df.get("description", pd.Series([""] * len(df))).fillna("")
         df["category"] = df.get("category", pd.Series(["geral"] * len(df))).fillna("geral")
-        df["category_normalized"] = df["category"].str.lower().str.strip()
+        df["imgurl"] = df.get("imgurl", pd.Series([""] * len(df))).fillna("")
+        df["category_normalized"] = df["category"].str.lower().str.strip().apply(_strip_accents)
         return df
 
     def _filter_category(self, category: str) -> pd.DataFrame:
-        """Filtra produtos pela categoria, tolerando diferenças de caixa."""
-        cat_lower = category.lower().strip()
-        return self._df[self._df["category_normalized"].str.contains(cat_lower, na=False)]
+        """Filtra produtos pela categoria, tolerando diferenças de caixa e acentos."""
+        cat_lower = _strip_accents(category.lower().strip())
+        return self._df[self._df["category_normalized"].str.contains(cat_lower, na=False, regex=False)]
 
     @staticmethod
     def _row_to_product(row: pd.Series, category: str) -> Product:
         """Converte uma linha do DataFrame em entidade Product."""
         name = str(row.get("name", "Produto sem nome")).strip()
         description = str(row.get("description", "")).strip()
-        # ID determinístico baseado no nome — garante reprodutibilidade
+        image_url = str(row.get("imgurl", "")).strip()
         product_id = hashlib.md5(name.encode()).hexdigest()[:12]
         return Product.create(
             name=name,
             description=description,
             category=category,
             product_id=product_id,
+            image_url=image_url,
         )

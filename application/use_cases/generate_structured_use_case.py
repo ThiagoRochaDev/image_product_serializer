@@ -17,11 +17,13 @@ from domain.repositories.image_repository import IImageRepository
 class IGeminiClient(ABC):
     """Port para o cliente Gemini."""
     @abstractmethod
-    def extract_visual_attributes(self, product_name: str, description: str, category: str) -> dict:
-        """
-        Chama o Gemini e retorna JSON com:
-        objeto, cor_principal, material, formato, detalhes_visuais, categoria_visual
-        """
+    def extract_visual_attributes(
+        self,
+        product_name: str,
+        description: str,
+        category: str,
+        image_url: str = "",
+    ) -> dict:
         ...
 
 
@@ -54,7 +56,12 @@ class GenerateStructuredUseCase:
         self._max_retries = max_retries
         self._retry_iou_threshold = retry_iou_threshold
 
-    def execute(self, product: Product, product_index: int) -> ImageResult:
+    def execute(
+        self,
+        product: Product,
+        product_index: int,
+        gemini_attributes: dict | None = None,
+    ) -> ImageResult:
         result = ImageResult(
             product_id=product.id,
             product_name=product.name,
@@ -62,11 +69,12 @@ class GenerateStructuredUseCase:
         )
 
         try:
-            # 1. Gemini — decomposição semântica
-            attributes = self._gemini.extract_visual_attributes(
+            # 1. Gemini — usa atributos pré-computados ou extrai agora
+            attributes = gemini_attributes or self._gemini.extract_visual_attributes(
                 product_name=product.name,
                 description=product.description,
                 category=product.category,
+                image_url=product.image_url,
             )
             result.gemini_attributes = attributes
 
