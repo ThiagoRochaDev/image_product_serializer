@@ -151,17 +151,18 @@ copy .env.example .env
 
 Edite o `.env`:
 
-| Variável | Obrigatória | Onde obter |
-|---|---|---|
-| `GEMINI_API_KEY` | Sim (exceto `--mock`) | [Google AI Studio](https://aistudio.google.com/app/apikey) — tier gratuito |
-| `HF_API_KEY` | Só se `SD_BACKEND=hf` | [HuggingFace Settings](https://huggingface.co/settings/tokens) — token Read, gratuito |
-| `STABILITY_API_KEY` | Só se `SD_BACKEND=api` | [Stability AI](https://platform.stability.ai/account/keys) — pago por crédito |
+| Variável | Obrigatória                                     | Onde obter |
+|---|-------------------------------------------------|---|
+| `GEMINI_API_KEY` | Sim (exceto `--mock`)                           | [Google AI Studio](https://aistudio.google.com/app/apikey) — tier gratuito |
+| `HF_API_KEY` | Só se `SD_BACKEND=hf`                           | [HuggingFace Settings](https://huggingface.co/settings/tokens) — token Read, gratuito |
+| `STABILITY_API_KEY` | Só se `SD_BACKEND=api`                          | [Stability AI](https://platform.stability.ai/account/keys) — pago por crédito |
 | `HF_MODEL_ID` | Não (padrão: `black-forest-labs/FLUX.1-schnell`) | ID de qualquer modelo de texto-para-imagem no HuggingFace |
-| `SD_BACKEND` | Não (padrão: `mock`) | `mock` / `hf` / `api` / `local` |
+| `SD_BACKEND` | Não (padrão: `mock`)                            | `mock` / `hf` / `api` / `local` |
+| `OPENCV_DUMP_CONFIG` | Não (padrão: 1)                                 | |
 
 ### Dataset Amazon Brasil
 
-O arquivo `data/amazon_brasil.csv` já vem com 15 produtos de exemplo prontos para uso. Para usar o dataset real do Kaggle (Amazon Brasil), baixe o CSV e substitua o arquivo — o repositório já faz o mapeamento automático das colunas.
+O arquivo `data/amazon_brasil.csv` [amazon_brasil AI](https://www.kaggle.com/datasets/asaniczka/amazon-brazil-products-2023-1-3m-products?resource=download) já vem com 15 produtos de exemplo prontos para uso. Para usar o dataset real do Kaggle (Amazon Brasil), baixe o CSV e substitua o arquivo — o repositório já faz o mapeamento automático das colunas.
 
 ---
 

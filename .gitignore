@@ -20,7 +20,7 @@ build/
 *.spec
 
 # ─── Outputs gerados pelo pipeline ──────────────────────────────────────────
-output/
+#output/
 data/
 
 # ─── IDEs e editores ─────────────────────────────────────────────────────────
